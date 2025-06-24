@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>ZYNTH Phase 2</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #00ffcc;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    audio {
+      margin-bottom: 2rem;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #00ffcc;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00ccaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>La vérité se cache entre les fréquences...</h1>
+  <audio controls autoplay>
+    <source src="https://files.catbox.moe/3jzs9n.mp3" type="audio/mp3">
+    Ton navigateur ne supporte pas l'audio.
+  </audio>
+
+  <input type="text" id="code" placeholder="Entrez ce que vous entendez...">
+  <button onclick="checkCode()">Valider</button>
+
+  <!-- indice : peut-être que le son révèle ce qui rampe... -->
+
+  <script>
+    function checkCode() {
+      const input = document.getElementById("code").value.toLowerCase().trim();
+      if (input === "serpent") {
+        window.location.href = "phase3.html";
+      } else {
+        alert("Ce n'est pas la bonne réponse. Écoutez attentivement...");
+      }
+    }
+  </script>
+
+</body>
+</html>
