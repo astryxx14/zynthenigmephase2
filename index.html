@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>ZYNTH - Phase 2</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    input {
+      font-size: 1.2rem;
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid #0f0;
+      background: #111;
+      color: #0f0;
+      text-align: center;
+      width: 250px;
+      margin-top: 20px;
+      outline: none;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 8px 20px;
+      border-radius: 5px;
+      border: none;
+      background: #0f0;
+      color: #000;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover {
+      background: #0c0;
+    }
+    #message {
+      margin-top: 15px;
+      font-style: italic;
+      color: #0f0;
+    }
+    audio {
+      margin-top: 30px;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Phase 2 - Mot mystère</h1>
+  <p>Écoutez cet indice audio et entrez le mot mystère reçu :</p>
+
+  <audio controls autoplay>
+    <source src="https://files.catbox.moe/3jzs9n.mp3" type="audio/mpeg">
+    Votre navigateur ne supporte pas la lecture audio.
+  </audio>
+
+  <input type="text" id="motMystere" placeholder="Votre réponse ici" autocomplete="off" />
+  <button id="validerBtn">Valider</button>
+
+  <div id="message"></div>
+
+  <script>
+    const validerBtn = document.getElementById('validerBtn');
+    const motMystereInput = document.getElementById('motMystere');
+    const messageDiv = document.getElementById('message');
+
+    validerBtn.addEventListener('click', () => {
+      const reponse = motMystereInput.value.trim().toLowerCase();
+      if (reponse === 'serpent') {
+        document.body.innerHTML = `
+          <h1>Bravo ! 🎉</h1>
+          <p>Vous avez trouvé le mot mystère.</p>
+          <p>Envoyez-le en message privé sur Discord à <strong>Astryxx</strong> pour débloquer la phase 3.</p>
+        `;
+      } else {
+        messageDiv.textContent = "Ce n'est pas le bon mot mystère. Essayez encore.";
+      }
+    });
+
+    motMystereInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') validerBtn.click();
+    });
+  </script>
+
+</body>
+</html>
